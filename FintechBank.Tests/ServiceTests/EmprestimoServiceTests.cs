@@ -35,4 +35,21 @@ public class EmprestimoServiceTests
         // Assert
         Assert.Equal(esperado, resultado);
     }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(-1)]
+    public void CalcularValorParcela_DeveLancarArgumentException_QuandoParcelasMenorOuIgualAZero(int parcelasInvalidas)
+    {
+        // Arrange
+        decimal valorTotal = 10000.00m;
+        int scoreCredito = 700;
+
+        // Act & Assert
+        var exception = Assert.Throws<ArgumentException>(() =>
+            _emprestimoService.CalcularValorParcela(valorTotal, parcelasInvalidas, scoreCredito)
+        );
+
+        Assert.Equal("O número de parcelas deve ser maior que zero. (Parameter 'parcelas')", exception.Message);
+    }
 }
