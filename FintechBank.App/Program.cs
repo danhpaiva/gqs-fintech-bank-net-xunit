@@ -13,3 +13,6 @@ int parcelas = 10;
 int scoreCredito = 650;
 decimal valorParcela = emprestimoService.CalcularValorParcela(valorTotalEmprestimo, parcelas, scoreCredito);
 WriteLine($"Valor total do empréstimo: R$ {valorTotalEmprestimo}, Parcelas: {parcelas}, Score de Crédito: {scoreCredito}, Valor da Parcela: R$ {valorParcela}");
+bool aprovado = emprestimoService.AprovarEmprestimo(5000.00m, valorParcela);
+
+WriteLine($"Empréstimo aprovado: {aprovado}");
